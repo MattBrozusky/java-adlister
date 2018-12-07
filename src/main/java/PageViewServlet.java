@@ -6,21 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = "/hello")
-public class HelloWorldServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/page-counter")
+public class PageViewServlet extends HttpServlet {
 
+
+    private static int pageCount = 1;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         PrintWriter out = res.getWriter();
 
-        String name = req.getParameter("name");
+        out.println(pageCount);
+        pageCount ++;
 
-        if (name == null){
-            name = "World!";
-        }
-        out.println("Hello, " + name);
     }
 
 }
