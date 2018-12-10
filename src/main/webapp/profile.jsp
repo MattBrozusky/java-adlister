@@ -12,8 +12,6 @@
 </jsp:include>
 <body>
 
-<h1>HI</h1>
-
 
 
 <%@include file="partials/scripts.html"%>
