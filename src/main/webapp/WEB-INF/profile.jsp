@@ -10,7 +10,7 @@
 
     <div class="container">
         <h1>Viewing your profile.</h1>
-        <h3>Hello ${request.username}</h3>
+        <h3>Hello ${sessionScope.userStatus}</h3>
     </div>
 
 
