@@ -10,10 +10,11 @@ public class ViewProfileServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (LoginServlet.validAttempt){
+        if (request.getSession().getAttribute("validAttempt") != null){
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
         } else {
             response.sendRedirect("/login");
         }
+
     }
 }

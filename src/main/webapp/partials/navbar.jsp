@@ -7,7 +7,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <c:choose>
-                <c:when test='${!sessionScope.validAttempt}'>
+                <c:when test='${sessionScope.validAttempt == null}'>
                     <li><a href="/login">Login</a></li>
                 </c:when>
             </c:choose>

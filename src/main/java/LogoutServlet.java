@@ -10,8 +10,7 @@ public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        LoginServlet.validAttempt = false;
-        request.getSession().setAttribute("validAttempt", false);
+        request.getSession().setAttribute("validAttempt", null);
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 }
