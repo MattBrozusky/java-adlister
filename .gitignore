@@ -1,4 +1,4 @@
 *.iml
 target/
 .idea/
-.src/main/java/Database/Config.Java
+src/main/java/Database/Config.Java
