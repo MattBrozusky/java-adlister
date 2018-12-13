@@ -1,0 +1,19 @@
+USE adlister_db;
+
+CREATE TABLE users (
+  id INT UNSIGNED AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+
+CREATE TABLE ads (
+  id INT UNSIGNED AUTO_INCREMENT,
+  title VARCHAR(100) NOT NULL,
+  description TEXT NOT NULL,
+  user_id INT UNSIGNED DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
