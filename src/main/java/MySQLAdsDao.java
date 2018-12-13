@@ -1,4 +1,6 @@
 import Database.Config;
+import com.mysql.jdbc.Driver;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +11,7 @@ public class MySQLAdsDao implements Ads {
 
     public MySQLAdsDao(Config config) {
         try {
+            DriverManager.registerDriver(new Driver());
             this.conn = DriverManager.getConnection(
                     config.getUrl(),
                     config.getUser(),
@@ -44,7 +47,7 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
-        String insertAd = String.format("INSERT INTO ads (title, description, user_id) VALUES '%s', '%s', '%d';", ad.getTitle(), ad.getDescription(), ad.getUserId());
+        String insertAd = String.format("INSERT INTO ads (title, description, user_id) VALUES ('%s', '%s', %d);", ad.getTitle(), ad.getDescription(), ad.getUserId());
         long lastInsertedId = 0;
 
         try {
@@ -55,7 +58,7 @@ public class MySQLAdsDao implements Ads {
             ResultSet keyRS = stmt.getGeneratedKeys();
 
             if (keyRS.next()) {
-                lastInsertedId = keyRS.getLong(1);
+                lastInsertedId = keyRS.getLong("id");
             }
         } catch (SQLException e) {
             e.printStackTrace();
