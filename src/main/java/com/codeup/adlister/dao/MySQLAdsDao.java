@@ -1,5 +1,6 @@
 package com.codeup.adlister.dao;
 
+import Database.Config;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
